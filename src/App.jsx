@@ -4,32 +4,38 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [color, setColor] = useState('olive');
+  const chageColor = (color) => {
+    return function () {
+      setColor(color)
+    }
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className='screen' style={{ backgroundColor: color }}>
+      <div className='bar'>
+        <div className='bar-inside'>
+          <button className='btn' style={{ backgroundColor: "green" }} onClick={chageColor("green")}>Green</button>
+          <button className='btn' style={{ backgroundColor: "red" }} onClick={chageColor("red")}>Red</button>
+          <button className='btn' style={{ backgroundColor: "blue", color: "white" }} onClick={chageColor("blue")}>Blue</button>
+          <button className='btn' style={{ backgroundColor: "yellow" }} onClick={() => {
+            setColor("yellow")
+          }}>Yellow</button>
+          <button className='btn' style={{ backgroundColor: "black", color: "white" }} onClick={() => {
+            setColor("black")
+          }}>Black</button>
+          <button className='btn' style={{ backgroundColor: "white" }} onClick={() => {
+            setColor("white")
+          }}>white</button>
+          <button className='btn' style={{ backgroundColor: "olive" }} onClick={() => {
+            setColor("olive")
+          }}>Olive</button>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
+
+
 }
 
 export default App
